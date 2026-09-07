@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "074a1589ee90",
+  "session": "20260907T141743Z",
+  "task_id": "sauce_logout",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce, open the side menu and log out.",
+  "category": "nav",
+  "difficulty": "easy",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "naive",
+  "run_index": 1,
+  "seed": 20260832,
+  "tag": "",
+  "timestamp": "2026-09-07T14:21:36+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 5577,
+  "checks": [
+    {
+      "name": "login_button_visible",
+      "passed": true,
+      "detail": "selector=#login-button"
+    },
+    {
+      "name": "left_inventory",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/"
+    },
+    {
+      "name": "no_products_rendered",
+      "passed": true,
+      "detail": "count=0"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 369
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 26
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 11
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 37
+    },
+    {
+      "index": 4,
+      "op": "click",
+      "target": "#react-burger-menu-btn",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 8
+    },
+    {
+      "index": 5,
+      "op": "wait_for",
+      "target": "#logout_sidebar_link",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 108
+    },
+    {
+      "index": 6,
+      "op": "click",
+      "target": "#logout_sidebar_link",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 13
+    },
+    {
+      "index": 7,
+      "op": "settle",
+      "target": "",
+      "value": "1.54s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 8,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_logout run 1 backend=naive\n    checks: all 3 checks passed\n"
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "38a0e3ba72c3",
+  "session": "20260907T143153Z",
+  "task_id": "sauce_checkout_happy_path",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce, add \"Sauce Labs Backpack\" to the cart, and complete the checkout filling the form with first name \"Ada\", last name \"Lovelace\", postal code \"N2L 3G1\". Finish the order.",
+  "category": "form",
+  "difficulty": "hard",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "naive",
+  "run_index": 3,
+  "seed": 20260834,
+  "tag": "",
+  "timestamp": "2026-09-07T14:32:13+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/checkout-complete.html",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 6036,
+  "checks": [
+    {
+      "name": "on_complete_page",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/checkout-complete.html"
+    },
+    {
+      "name": "thank_you_header",
+      "passed": true,
+      "detail": "header='Thank you for your order!'"
+    },
+    {
+      "name": "confirmation_body_present",
+      "passed": true,
+      "detail": "body='Your order has been dispatched, and will arrive just as fast as the pony can get there!'"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 355
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 34
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 8
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 44
+    },
+    {
+      "index": 4,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 12
+    },
+    {
+      "index": 5,
+      "op": "click",
+      "target": ".shopping_cart_link",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 12
+    },
+    {
+      "index": 6,
+      "op": "click",
+      "target": "[data-test=\"checkout\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 12
+    },
+    {
+      "index": 7,
+      "op": "fill",
+      "target": "#first-name",
+      "value": "Ada",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 8
+    },
+    {
+      "index": 8,
+      "op": "fill",
+      "target": "#last-name",
+      "value": "Lovelace",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 9
+    },
+    {
+      "index": 9,
+      "op": "fill",
+      "target": "#postal-code",
+      "value": "N2L 3G1",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 9
+    },
+    {
+      "index": 10,
+      "op": "click",
+      "target": "#continue",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 24
+    },
+    {
+      "index": 11,
+      "op": "wait_for",
+      "target": ".summary_info",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 122
+    },
+    {
+      "index": 12,
+      "op": "click",
+      "target": "#finish",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 11
+    },
+    {
+      "index": 13,
+      "op": "settle",
+      "target": "",
+      "value": "0.25s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 14,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_checkout_happy_path run 3 backend=naive\n    checks: all 3 checks passed\n"
+}

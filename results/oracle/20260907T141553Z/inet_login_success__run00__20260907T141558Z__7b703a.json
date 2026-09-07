@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "6567b2e60adc",
+  "session": "20260907T141553Z",
+  "task_id": "inet_login_success",
+  "instruction": "Open https://the-internet.herokuapp.com/login, log in with the username \"tomsmith\" and the password \"SuperSecretPassword!\", and stay on the secure page.",
+  "category": "auth",
+  "difficulty": "easy",
+  "start_url": "https://the-internet.herokuapp.com/login",
+  "site": "the-internet.herokuapp.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:15:58+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/secure",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3900,
+  "checks": [
+    {
+      "name": "url_is_secure",
+      "passed": true,
+      "detail": "url=https://the-internet.herokuapp.com/secure"
+    },
+    {
+      "name": "flash_confirms_login",
+      "passed": true,
+      "detail": "flash='You logged into a secure area! ×'"
+    },
+    {
+      "name": "logout_button_visible",
+      "passed": true,
+      "detail": "selector=a.button"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/login",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1201
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#username",
+      "value": "tomsmith",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 33
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "SuperSecretPassword!",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 12
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "button[type=\"submit\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 170
+    },
+    {
+      "index": 4,
+      "op": "wait_for",
+      "target": "#flash",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 37
+    }
+  ],
+  "n_steps": 5,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_login_success run 0 backend=oracle\n    checks: all 3 checks passed\n"
+}

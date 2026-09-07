@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.pytest_tmp/
+.pytest_tmp2/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Note: results/ IS committed — the run outputs and reports are the evidence
+# that this project actually ran. They are small (~2KB per JSON) and fully
+# reproducible via `python run_eval.py analyze`.

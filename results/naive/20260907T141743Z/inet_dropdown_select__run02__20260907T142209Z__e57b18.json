@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "c35f3764a489",
+  "session": "20260907T141743Z",
+  "task_id": "inet_dropdown_select",
+  "instruction": "Open https://the-internet.herokuapp.com/dropdown and select the option labelled \"Option 1\" from the dropdown.",
+  "category": "form",
+  "difficulty": "easy",
+  "start_url": "https://the-internet.herokuapp.com/dropdown",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 2,
+  "seed": 20260833,
+  "tag": "",
+  "timestamp": "2026-09-07T14:22:10+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/dropdown",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 4811,
+  "checks": [
+    {
+      "name": "selected_value_is_1",
+      "passed": true,
+      "detail": "value='1'"
+    },
+    {
+      "name": "selected_label_is_option_1",
+      "passed": true,
+      "detail": "selected_text='Option 1'"
+    }
+  ],
+  "checks_summary": "all 2 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/dropdown",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 692
+    },
+    {
+      "index": 1,
+      "op": "select",
+      "target": "#dropdown",
+      "value": "1",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 26
+    },
+    {
+      "index": 2,
+      "op": "settle",
+      "target": "",
+      "value": "1.32s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 3,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_dropdown_select run 2 backend=naive\n    checks: all 2 checks passed\n"
+}

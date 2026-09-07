@@ -1,0 +1,26 @@
+{
+  "session": "20260907T143121Z",
+  "backend": "naive",
+  "tag": "",
+  "created_utc": "2026-09-07T14:31:52+00:00",
+  "runs_per_task": 6,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 1,
+  "n_runs": 6,
+  "n_passed": 6,
+  "elapsed_s": 31.38,
+  "python": "3.13.14",
+  "tasks": [
+    "sauce_sort_price_low_high"
+  ],
+  "results": [
+    "naive\\20260907T143121Z\\sauce_sort_price_low_high__run00__20260907T143121Z__73dd63.json",
+    "naive\\20260907T143121Z\\sauce_sort_price_low_high__run01__20260907T143127Z__5a623f.json",
+    "naive\\20260907T143121Z\\sauce_sort_price_low_high__run02__20260907T143131Z__975d72.json",
+    "naive\\20260907T143121Z\\sauce_sort_price_low_high__run03__20260907T143136Z__11661c.json",
+    "naive\\20260907T143121Z\\sauce_sort_price_low_high__run04__20260907T143141Z__382951.json",
+    "naive\\20260907T143121Z\\sauce_sort_price_low_high__run05__20260907T143147Z__6693b6.json"
+  ]
+}

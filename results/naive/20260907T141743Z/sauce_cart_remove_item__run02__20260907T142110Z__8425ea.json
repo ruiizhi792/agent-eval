@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "ac054573106e",
+  "session": "20260907T141743Z",
+  "task_id": "sauce_cart_remove_item",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce, add \"Sauce Labs Backpack\" and \"Sauce Labs Bike Light\" to the cart, open the cart, and remove \"Sauce Labs Backpack\". Exactly one item must remain.",
+  "category": "nav",
+  "difficulty": "medium",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "naive",
+  "run_index": 2,
+  "seed": 20260833,
+  "tag": "",
+  "timestamp": "2026-09-07T14:21:11+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/cart.html",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 4991,
+  "checks": [
+    {
+      "name": "on_cart_page",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/cart.html"
+    },
+    {
+      "name": "one_cart_item",
+      "passed": true,
+      "detail": "count=1 expected=1"
+    },
+    {
+      "name": "remaining_item_is_bike_light",
+      "passed": true,
+      "detail": "names=['Sauce Labs Bike Light']"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 484
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 29
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 8
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 36
+    },
+    {
+      "index": 4,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 8
+    },
+    {
+      "index": 5,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-bike-light\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 8
+    },
+    {
+      "index": 6,
+      "op": "click",
+      "target": ".shopping_cart_link",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 14
+    },
+    {
+      "index": 7,
+      "op": "click",
+      "target": "[data-test=\"remove-sauce-labs-backpack\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 7
+    },
+    {
+      "index": 8,
+      "op": "settle",
+      "target": "",
+      "value": "1.07s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 9,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_cart_remove_item run 2 backend=naive\n    checks: all 3 checks passed\n"
+}

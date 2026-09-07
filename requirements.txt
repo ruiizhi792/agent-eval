@@ -1,0 +1,35 @@
+# AgentEval — pinned dependencies.
+#
+# Versions are pinned on purpose: an evaluation result you cannot reproduce six months
+# from now is not a result. Bump deliberately, and re-run the oracle calibration after
+# every bump.
+#
+# Install:
+#     python -m venv .venv
+#     .venv/Scripts/python -m pip install -r requirements.txt   (Windows)
+#     .venv/bin/python -m pip install -r requirements.txt       (WSL / macOS / Linux)
+#     .venv/Scripts/python -m playwright install chromium       (Windows)
+#
+# NOTE ON THE PINS BELOW: they were resolved against CPython 3.13. The first versions
+# I wrote down (playwright 1.47.2, matplotlib 3.9.2) do not exist / have no 3.13
+# wheels; the current pins were verified to install on 3.13.12. See SELF_REPORT.md.
+
+# --- core (required) -------------------------------------------------------
+playwright==1.49.1          # browser automation; also needs `playwright install chromium`
+matplotlib==3.10.1          # the one chart in the report; imported lazily
+
+# --- testing ---------------------------------------------------------------
+pytest==8.3.3               # offline test suite (tests/ needs no browser)
+
+# --- optional --------------------------------------------------------------
+# The real LLM agent backend. NOT installed by default: it is heavy, its API has
+# moved several times, and it needs an API key. Without it, `--backend browser-use`
+# raises BackendUnavailable and the CLI exits with a friendly message instead of
+# crashing.
+#
+# Intentionally NOT pinned: `aeval/backends/browser_use.py` probes several import
+# layouts (browser_use.ChatBrowserUse / browser_use.llm.ChatOpenAI / langchain_openai)
+# but has never been executed here — there is no version I can honestly claim to have
+# verified. Install whatever is current, check `python run_eval.py list-backends`, and
+# add your version's import path to _load_llm_class() if it is missing.
+browser-use                 # optional  (pip install browser-use; set OPENAI_API_KEY)

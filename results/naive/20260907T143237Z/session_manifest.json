@@ -1,0 +1,26 @@
+{
+  "session": "20260907T143237Z",
+  "backend": "naive",
+  "tag": "",
+  "created_utc": "2026-09-07T14:33:09+00:00",
+  "runs_per_task": 6,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 1,
+  "n_runs": 6,
+  "n_passed": 6,
+  "elapsed_s": 32.58,
+  "python": "3.13.14",
+  "tasks": [
+    "inet_login_success"
+  ],
+  "results": [
+    "naive\\20260907T143237Z\\inet_login_success__run00__20260907T143237Z__c15b43.json",
+    "naive\\20260907T143237Z\\inet_login_success__run01__20260907T143243Z__bd1ba9.json",
+    "naive\\20260907T143237Z\\inet_login_success__run02__20260907T143248Z__d7eca2.json",
+    "naive\\20260907T143237Z\\inet_login_success__run03__20260907T143254Z__075081.json",
+    "naive\\20260907T143237Z\\inet_login_success__run04__20260907T143259Z__7c1483.json",
+    "naive\\20260907T143237Z\\inet_login_success__run05__20260907T143305Z__b1e56f.json"
+  ]
+}

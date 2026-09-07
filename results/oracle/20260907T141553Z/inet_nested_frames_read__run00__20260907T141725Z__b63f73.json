@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "b3512e51b0f3",
+  "session": "20260907T141553Z",
+  "task_id": "inet_nested_frames_read",
+  "instruction": "Open https://the-internet.herokuapp.com/nested_frames and visit each of the frames so that the text of the left, middle, right and bottom frames is loaded.",
+  "category": "frame",
+  "difficulty": "hard",
+  "start_url": "https://the-internet.herokuapp.com/nested_frames",
+  "site": "the-internet.herokuapp.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:17:25+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/nested_frames",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 7266,
+  "checks": [
+    {
+      "name": "frame_frame-left_content",
+      "passed": true,
+      "detail": "observed='LEFT' expected='LEFT'"
+    },
+    {
+      "name": "frame_frame-middle_content",
+      "passed": true,
+      "detail": "observed='MIDDLE' expected='MIDDLE'"
+    },
+    {
+      "name": "frame_frame-right_content",
+      "passed": true,
+      "detail": "observed='RIGHT' expected='RIGHT'"
+    },
+    {
+      "name": "frame_frame-bottom_content",
+      "passed": true,
+      "detail": "observed='BOTTOM' expected='BOTTOM'"
+    }
+  ],
+  "checks_summary": "all 4 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/nested_frames",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 918
+    },
+    {
+      "index": 1,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-left\"]",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 20
+    },
+    {
+      "index": 2,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-middle\"]",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 9
+    },
+    {
+      "index": 3,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-right\"]",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 10
+    },
+    {
+      "index": 4,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-bottom\"]",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 9
+    }
+  ],
+  "n_steps": 5,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_nested_frames_read run 0 backend=oracle\n    checks: all 4 checks passed\n"
+}

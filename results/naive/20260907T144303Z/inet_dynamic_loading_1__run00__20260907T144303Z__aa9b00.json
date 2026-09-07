@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "36a3d25f2234",
+  "session": "20260907T144303Z",
+  "task_id": "inet_dynamic_loading_1",
+  "instruction": "Open https://the-internet.herokuapp.com/dynamic_loading/1, click the start button, and wait until the \"Hello World!\" message is visible.",
+  "category": "dynamic",
+  "difficulty": "easy",
+  "start_url": "https://the-internet.herokuapp.com/dynamic_loading/1",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:43:04+00:00",
+  "passed": false,
+  "final_url": "https://the-internet.herokuapp.com/dynamic_loading/1",
+  "error": "1/2 checks failed (first: finish_element_visible -> selector=#finish)",
+  "error_type": "verify",
+  "duration_ms": 5340,
+  "checks": [
+    {
+      "name": "finish_element_visible",
+      "passed": false,
+      "detail": "selector=#finish"
+    },
+    {
+      "name": "finish_text_is_hello_world",
+      "passed": true,
+      "detail": "text='Hello World!' expected='Hello World!'"
+    }
+  ],
+  "checks_summary": "1/2 checks failed (first: finish_element_visible -> selector=#finish)",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/dynamic_loading/1",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 670
+    },
+    {
+      "index": 1,
+      "op": "click",
+      "target": "#start button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 30
+    },
+    {
+      "index": 2,
+      "op": "wait_for",
+      "target": "#finish",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 74
+    },
+    {
+      "index": 3,
+      "op": "settle",
+      "target": "",
+      "value": "1.88s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 4,
+  "n_failed_steps": 0,
+  "logs": "[FAIL] inet_dynamic_loading_1 run 0 backend=naive\n    error_type=verify error=1/2 checks failed (first: finish_element_visible -> selector=#finish)\n    checks: 1/2 checks failed (first: finish_element_visible -> selector=#finish)\n"
+}

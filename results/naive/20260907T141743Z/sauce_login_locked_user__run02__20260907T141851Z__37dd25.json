@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "0722e9cbf338",
+  "session": "20260907T141743Z",
+  "task_id": "sauce_login_locked_user",
+  "instruction": "Go to https://www.saucedemo.com, try to log in as \"locked_out_user\" with the password \"secret_sauce\", and leave the resulting error message on screen.",
+  "category": "auth",
+  "difficulty": "easy",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "naive",
+  "run_index": 2,
+  "seed": 20260833,
+  "tag": "",
+  "timestamp": "2026-09-07T14:18:52+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 4083,
+  "checks": [
+    {
+      "name": "did_not_reach_inventory",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/"
+    },
+    {
+      "name": "login_button_still_visible",
+      "passed": true,
+      "detail": "selector=#login-button"
+    },
+    {
+      "name": "error_message_shown",
+      "passed": true,
+      "detail": "error='Epic sadface: Sorry, this user has been locked out.' expected_fragment='locked out'"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 365
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "locked_out_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 33
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 14
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 19
+    },
+    {
+      "index": 4,
+      "op": "settle",
+      "target": "",
+      "value": "0.63s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 5,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_login_locked_user run 2 backend=naive\n    checks: all 3 checks passed\n"
+}

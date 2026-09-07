@@ -1,0 +1,21 @@
+{
+  "session": "20260907T144257Z",
+  "backend": "oracle",
+  "tag": "",
+  "created_utc": "2026-09-07T14:43:02+00:00",
+  "runs_per_task": 1,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 1,
+  "n_runs": 1,
+  "n_passed": 1,
+  "elapsed_s": 4.51,
+  "python": "3.13.14",
+  "tasks": [
+    "sauce_login_success"
+  ],
+  "results": [
+    "oracle\\20260907T144257Z\\sauce_login_success__run00__20260907T144257Z__7406e3.json"
+  ]
+}

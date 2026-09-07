@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "1a94efd1e234",
+  "session": "20260907T141743Z",
+  "task_id": "inet_js_confirm_accept",
+  "instruction": "Open https://the-internet.herokuapp.com/javascript_alerts, click the button that opens a JavaScript confirm dialog, and ACCEPT the dialog so the page reports \"You clicked: Ok\".",
+  "category": "dynamic",
+  "difficulty": "medium",
+  "start_url": "https://the-internet.herokuapp.com/javascript_alerts",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 2,
+  "seed": 20260833,
+  "tag": "",
+  "timestamp": "2026-09-07T14:25:32+00:00",
+  "passed": false,
+  "final_url": "https://the-internet.herokuapp.com/javascript_alerts",
+  "error": "2/2 checks failed (first: result_is_ok -> result='You clicked: Cancel' expected='You clicked: Ok')",
+  "error_type": "verify",
+  "duration_ms": 5488,
+  "checks": [
+    {
+      "name": "result_is_ok",
+      "passed": false,
+      "detail": "result='You clicked: Cancel' expected='You clicked: Ok'"
+    },
+    {
+      "name": "result_is_not_cancel",
+      "passed": false,
+      "detail": "result='You clicked: Cancel'"
+    }
+  ],
+  "checks_summary": "2/2 checks failed (first: result_is_ok -> result='You clicked: Cancel' expected='You clicked: Ok')",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/javascript_alerts",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 654
+    },
+    {
+      "index": 1,
+      "op": "dialog_accept",
+      "target": "",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    },
+    {
+      "index": 2,
+      "op": "click",
+      "target": "button[onclick=\"jsConfirm()\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 37
+    },
+    {
+      "index": 3,
+      "op": "wait_for",
+      "target": "#result",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 35
+    },
+    {
+      "index": 4,
+      "op": "settle",
+      "target": "",
+      "value": "1.60s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 5,
+  "n_failed_steps": 0,
+  "logs": "[FAIL] inet_js_confirm_accept run 2 backend=naive\n    error_type=verify error=2/2 checks failed (first: result_is_ok -> result='You clicked: Cancel' expected='You clicked: Ok')\n    checks: 2/2 checks failed (first: result_is_ok -> result='You clicked: Cancel' expected='You clicked: Ok')\n"
+}

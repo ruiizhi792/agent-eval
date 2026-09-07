@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "e8a65436f899",
+  "session": "20260907T141553Z",
+  "task_id": "sauce_checkout_missing_postal",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce, add \"Sauce Labs Backpack\" to the cart, start checkout, fill first name \"Ada\" and last name \"Lovelace\" but leave the postal code empty, then submit. Leave the validation error on screen.",
+  "category": "form",
+  "difficulty": "medium",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:16:44+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/checkout-step-one.html",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3869,
+  "checks": [
+    {
+      "name": "still_on_step_one",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/checkout-step-one.html"
+    },
+    {
+      "name": "postal_code_error",
+      "passed": true,
+      "detail": "error='Error: Postal Code is required'"
+    },
+    {
+      "name": "first_name_retained",
+      "passed": true,
+      "detail": "first_name='Ada'"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1180
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 34
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 13
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 67
+    },
+    {
+      "index": 4,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 35
+    },
+    {
+      "index": 5,
+      "op": "click",
+      "target": ".shopping_cart_link",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 55
+    },
+    {
+      "index": 6,
+      "op": "click",
+      "target": "[data-test=\"checkout\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 46
+    },
+    {
+      "index": 7,
+      "op": "fill",
+      "target": "#first-name",
+      "value": "Ada",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 13
+    },
+    {
+      "index": 8,
+      "op": "fill",
+      "target": "#last-name",
+      "value": "Lovelace",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 12
+    },
+    {
+      "index": 9,
+      "op": "click",
+      "target": "#continue",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 43
+    }
+  ],
+  "n_steps": 10,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_checkout_missing_postal run 0 backend=oracle\n    checks: all 3 checks passed\n"
+}

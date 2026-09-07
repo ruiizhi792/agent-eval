@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "55513dd315d0",
+  "session": "20260907T141553Z",
+  "task_id": "inet_js_confirm_accept",
+  "instruction": "Open https://the-internet.herokuapp.com/javascript_alerts, click the button that opens a JavaScript confirm dialog, and ACCEPT the dialog so the page reports \"You clicked: Ok\".",
+  "category": "dynamic",
+  "difficulty": "medium",
+  "start_url": "https://the-internet.herokuapp.com/javascript_alerts",
+  "site": "the-internet.herokuapp.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:17:11+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/javascript_alerts",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3487,
+  "checks": [
+    {
+      "name": "result_is_ok",
+      "passed": true,
+      "detail": "result='You clicked: Ok' expected='You clicked: Ok'"
+    },
+    {
+      "name": "result_is_not_cancel",
+      "passed": true,
+      "detail": "result='You clicked: Ok'"
+    }
+  ],
+  "checks_summary": "all 2 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/javascript_alerts",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1119
+    },
+    {
+      "index": 1,
+      "op": "dialog_accept",
+      "target": "",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    },
+    {
+      "index": 2,
+      "op": "click",
+      "target": "button[onclick=\"jsConfirm()\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 69
+    },
+    {
+      "index": 3,
+      "op": "wait_for",
+      "target": "#result",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 6
+    }
+  ],
+  "n_steps": 4,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_js_confirm_accept run 0 backend=oracle\n    checks: all 2 checks passed\n"
+}

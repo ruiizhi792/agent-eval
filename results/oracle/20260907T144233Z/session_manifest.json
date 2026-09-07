@@ -1,0 +1,29 @@
+{
+  "session": "20260907T144233Z",
+  "backend": "oracle",
+  "tag": "",
+  "created_utc": "2026-09-07T14:42:56+00:00",
+  "runs_per_task": 1,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 5,
+  "n_runs": 5,
+  "n_passed": 5,
+  "elapsed_s": 22.98,
+  "python": "3.13.14",
+  "tasks": [
+    "inet_login_invalid_password",
+    "inet_login_success",
+    "sauce_login_locked_user",
+    "sauce_login_success",
+    "sauce_login_wrong_password"
+  ],
+  "results": [
+    "oracle\\20260907T144233Z\\inet_login_invalid_password__run00__20260907T144233Z__fc52b5.json",
+    "oracle\\20260907T144233Z\\inet_login_success__run00__20260907T144239Z__d21575.json",
+    "oracle\\20260907T144233Z\\sauce_login_locked_user__run00__20260907T144243Z__c8d670.json",
+    "oracle\\20260907T144233Z\\sauce_login_success__run00__20260907T144248Z__c54673.json",
+    "oracle\\20260907T144233Z\\sauce_login_wrong_password__run00__20260907T144252Z__380975.json"
+  ]
+}

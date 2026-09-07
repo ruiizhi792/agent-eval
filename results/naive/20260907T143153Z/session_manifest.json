@@ -1,0 +1,26 @@
+{
+  "session": "20260907T143153Z",
+  "backend": "naive",
+  "tag": "",
+  "created_utc": "2026-09-07T14:32:36+00:00",
+  "runs_per_task": 6,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 1,
+  "n_runs": 6,
+  "n_passed": 6,
+  "elapsed_s": 42.46,
+  "python": "3.13.14",
+  "tasks": [
+    "sauce_checkout_happy_path"
+  ],
+  "results": [
+    "naive\\20260907T143153Z\\sauce_checkout_happy_path__run00__20260907T143153Z__fe89a1.json",
+    "naive\\20260907T143153Z\\sauce_checkout_happy_path__run01__20260907T143200Z__2bfcd8.json",
+    "naive\\20260907T143153Z\\sauce_checkout_happy_path__run02__20260907T143207Z__c0db45.json",
+    "naive\\20260907T143153Z\\sauce_checkout_happy_path__run03__20260907T143213Z__c5dab8.json",
+    "naive\\20260907T143153Z\\sauce_checkout_happy_path__run04__20260907T143219Z__f547c3.json",
+    "naive\\20260907T143153Z\\sauce_checkout_happy_path__run05__20260907T143229Z__56d175.json"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "9ca1fa67aea2",
+  "session": "20260907T141743Z",
+  "task_id": "inet_table_read_cell",
+  "instruction": "Open https://the-internet.herokuapp.com/tables and find the e-mail address of the person whose last name is \"Doe\" in the first table.",
+  "category": "table",
+  "difficulty": "medium",
+  "start_url": "https://the-internet.herokuapp.com/tables",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 4,
+  "seed": 20260835,
+  "tag": "",
+  "timestamp": "2026-09-07T14:23:53+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/tables",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3831,
+  "checks": [
+    {
+      "name": "table_has_rows",
+      "passed": true,
+      "detail": "count=4"
+    },
+    {
+      "name": "doe_row_found",
+      "passed": true,
+      "detail": "found_first_name='Jason' found_email='jdoe@hotmail.com'"
+    },
+    {
+      "name": "doe_email_matches",
+      "passed": true,
+      "detail": "email='jdoe@hotmail.com' expected='jdoe@hotmail.com'"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/tables",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 603
+    },
+    {
+      "index": 1,
+      "op": "wait_for",
+      "target": "#table1 tbody tr",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 31
+    },
+    {
+      "index": 2,
+      "op": "settle",
+      "target": "",
+      "value": "0.43s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 3,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_table_read_cell run 4 backend=naive\n    checks: all 3 checks passed\n"
+}

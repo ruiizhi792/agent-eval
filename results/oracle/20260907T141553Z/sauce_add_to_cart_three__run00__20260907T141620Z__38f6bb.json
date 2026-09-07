@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "be79f34e5f51",
+  "session": "20260907T141553Z",
+  "task_id": "sauce_add_to_cart_three",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce, then add \"Sauce Labs Backpack\", \"Sauce Labs Bike Light\" and \"Sauce Labs Bolt T-Shirt\" to the cart. The cart badge must read 3.",
+  "category": "nav",
+  "difficulty": "medium",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:16:21+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/inventory.html",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3715,
+  "checks": [
+    {
+      "name": "still_on_inventory",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/inventory.html"
+    },
+    {
+      "name": "badge_count",
+      "passed": true,
+      "detail": "badge='3' expected=3"
+    }
+  ],
+  "checks_summary": "all 2 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1160
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 36
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 12
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 77
+    },
+    {
+      "index": 4,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 36
+    },
+    {
+      "index": 5,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-bike-light\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 48
+    },
+    {
+      "index": 6,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-bolt-t-shirt\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 33
+    }
+  ],
+  "n_steps": 7,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_add_to_cart_three run 0 backend=oracle\n    checks: all 2 checks passed\n"
+}

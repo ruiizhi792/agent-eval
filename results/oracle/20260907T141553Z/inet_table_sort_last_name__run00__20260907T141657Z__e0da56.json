@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "f7f6468d8f23",
+  "session": "20260907T141553Z",
+  "task_id": "inet_table_sort_last_name",
+  "instruction": "Open https://the-internet.herokuapp.com/tables and sort the first table by \"Last Name\" so the names run in ascending alphabetical order.",
+  "category": "table",
+  "difficulty": "hard",
+  "start_url": "https://the-internet.herokuapp.com/tables",
+  "site": "the-internet.herokuapp.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:16:58+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/tables",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3521,
+  "checks": [
+    {
+      "name": "table_has_rows",
+      "passed": true,
+      "detail": "count=4"
+    },
+    {
+      "name": "last_names_ascending",
+      "passed": true,
+      "detail": "observed=['Bach', 'Conway', 'Doe', 'Smith'] expected=['Bach', 'Conway', 'Doe', 'Smith']"
+    }
+  ],
+  "checks_summary": "all 2 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/tables",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1095
+    },
+    {
+      "index": 1,
+      "op": "wait_for",
+      "target": "#table1 tbody tr",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 24
+    },
+    {
+      "index": 2,
+      "op": "click",
+      "target": "#table1 thead th:has-text(\"Last Name\")",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 56
+    }
+  ],
+  "n_steps": 3,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_table_sort_last_name run 0 backend=oracle\n    checks: all 2 checks passed\n"
+}

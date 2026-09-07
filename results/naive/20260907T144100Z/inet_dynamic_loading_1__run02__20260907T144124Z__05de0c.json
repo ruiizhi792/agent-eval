@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "c274574209de",
+  "session": "20260907T144100Z",
+  "task_id": "inet_dynamic_loading_1",
+  "instruction": "Open https://the-internet.herokuapp.com/dynamic_loading/1, click the start button, and wait until the \"Hello World!\" message is visible.",
+  "category": "dynamic",
+  "difficulty": "easy",
+  "start_url": "https://the-internet.herokuapp.com/dynamic_loading/1",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 2,
+  "seed": 20260833,
+  "tag": "",
+  "timestamp": "2026-09-07T14:41:25+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/dynamic_loading/1",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 10862,
+  "checks": [
+    {
+      "name": "finish_element_visible",
+      "passed": true,
+      "detail": "selector=#finish"
+    },
+    {
+      "name": "finish_text_is_hello_world",
+      "passed": true,
+      "detail": "text='Hello World!' expected='Hello World!'"
+    }
+  ],
+  "checks_summary": "all 2 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/dynamic_loading/1",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 632
+    },
+    {
+      "index": 1,
+      "op": "click",
+      "target": "#start button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 31
+    },
+    {
+      "index": 2,
+      "op": "wait_for",
+      "target": "#finish",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 68
+    },
+    {
+      "index": 3,
+      "op": "settle",
+      "target": "",
+      "value": "7.10s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 4,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_dynamic_loading_1 run 2 backend=naive\n    checks: all 2 checks passed\n"
+}

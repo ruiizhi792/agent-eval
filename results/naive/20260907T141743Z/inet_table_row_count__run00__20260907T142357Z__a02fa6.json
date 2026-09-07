@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "174a8ba422b5",
+  "session": "20260907T141743Z",
+  "task_id": "inet_table_row_count",
+  "instruction": "Open https://the-internet.herokuapp.com/tables and leave the two example tables rendered. Both tables must show all four data rows.",
+  "category": "table",
+  "difficulty": "easy",
+  "start_url": "https://the-internet.herokuapp.com/tables",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:23:57+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/tables",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3881,
+  "checks": [
+    {
+      "name": "table1_has_four_rows",
+      "passed": true,
+      "detail": "count=4"
+    },
+    {
+      "name": "table2_has_four_rows",
+      "passed": true,
+      "detail": "count=4"
+    }
+  ],
+  "checks_summary": "all 2 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/tables",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 737
+    },
+    {
+      "index": 1,
+      "op": "settle",
+      "target": "",
+      "value": "0.49s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 2,
+  "n_failed_steps": 0,
+  "logs": "[PASS] inet_table_row_count run 0 backend=naive\n    checks: all 2 checks passed\n"
+}

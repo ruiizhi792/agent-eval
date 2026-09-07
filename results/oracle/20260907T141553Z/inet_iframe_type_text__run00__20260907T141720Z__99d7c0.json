@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "34df715a5592",
+  "session": "20260907T141553Z",
+  "task_id": "inet_iframe_type_text",
+  "instruction": "Open https://the-internet.herokuapp.com/iframe and type the exact text \"AgentEval was here\" into the rich-text editor inside the frame.",
+  "category": "frame",
+  "difficulty": "medium",
+  "start_url": "https://the-internet.herokuapp.com/iframe",
+  "site": "the-internet.herokuapp.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:17:20+00:00",
+  "passed": false,
+  "final_url": "https://the-internet.herokuapp.com/iframe",
+  "error": "1/2 checks failed (first: iframe_text_matches -> iframe_text='Your content goes here.' expected='AgentEval was here')",
+  "error_type": "verify",
+  "duration_ms": 4221,
+  "checks": [
+    {
+      "name": "iframe_text_matches",
+      "passed": false,
+      "detail": "iframe_text='Your content goes here.' expected='AgentEval was here'"
+    },
+    {
+      "name": "iframe_text_non_empty",
+      "passed": true,
+      "detail": "iframe_text='Your content goes here.'"
+    }
+  ],
+  "checks_summary": "1/2 checks failed (first: iframe_text_matches -> iframe_text='Your content goes here.' expected='AgentEval was here')",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/iframe",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1808
+    },
+    {
+      "index": 1,
+      "op": "frame_fill",
+      "target": "#tinymce",
+      "value": "AgentEval was here",
+      "frame": "#mce_0_ifr",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 109
+    }
+  ],
+  "n_steps": 2,
+  "n_failed_steps": 0,
+  "logs": "[FAIL] inet_iframe_type_text run 0 backend=oracle\n    error_type=verify error=1/2 checks failed (first: iframe_text_matches -> iframe_text='Your content goes here.' expected='AgentEval was here')\n    checks: 1/2 checks failed (first: iframe_text_matches -> iframe_text='Your content goes here.' expected='AgentEval was here')\n"
+}

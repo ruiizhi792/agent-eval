@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "82999df5a3fd",
+  "session": "20260907T141743Z",
+  "task_id": "sauce_sort_price_low_high",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce and sort the product list by price from low to high.",
+  "category": "dynamic",
+  "difficulty": "medium",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "naive",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:25:49+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/inventory.html",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 5435,
+  "checks": [
+    {
+      "name": "sort_control_set_to_lohi",
+      "passed": true,
+      "detail": "value='lohi'"
+    },
+    {
+      "name": "prices_ascending",
+      "passed": true,
+      "detail": "prices=[7.99, 9.99, 15.99, 15.99, 29.99, 49.99]"
+    },
+    {
+      "name": "cheapest_first",
+      "passed": true,
+      "detail": "first_price=7.99 expected=7.99"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 377
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 34
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 25
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 43
+    },
+    {
+      "index": 4,
+      "op": "select",
+      "target": "[data-test=\"product-sort-container\"]",
+      "value": "lohi",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 10
+    },
+    {
+      "index": 5,
+      "op": "settle",
+      "target": "",
+      "value": "1.39s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 6,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_sort_price_low_high run 0 backend=naive\n    checks: all 3 checks passed\n"
+}

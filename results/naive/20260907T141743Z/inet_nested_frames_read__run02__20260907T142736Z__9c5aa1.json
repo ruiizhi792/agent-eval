@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "8a71050c84c9",
+  "session": "20260907T141743Z",
+  "task_id": "inet_nested_frames_read",
+  "instruction": "Open https://the-internet.herokuapp.com/nested_frames and visit each of the frames so that the text of the left, middle, right and bottom frames is loaded.",
+  "category": "frame",
+  "difficulty": "hard",
+  "start_url": "https://the-internet.herokuapp.com/nested_frames",
+  "site": "the-internet.herokuapp.com",
+  "backend": "naive",
+  "run_index": 2,
+  "seed": 20260833,
+  "tag": "",
+  "timestamp": "2026-09-07T14:27:37+00:00",
+  "passed": true,
+  "final_url": "https://the-internet.herokuapp.com/nested_frames",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 19300,
+  "checks": [
+    {
+      "name": "frame_frame-left_content",
+      "passed": true,
+      "detail": "observed='LEFT' expected='LEFT'"
+    },
+    {
+      "name": "frame_frame-middle_content",
+      "passed": true,
+      "detail": "observed='MIDDLE' expected='MIDDLE'"
+    },
+    {
+      "name": "frame_frame-right_content",
+      "passed": true,
+      "detail": "observed='RIGHT' expected='RIGHT'"
+    },
+    {
+      "name": "frame_frame-bottom_content",
+      "passed": true,
+      "detail": "observed='BOTTOM' expected='BOTTOM'"
+    }
+  ],
+  "checks_summary": "all 4 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://the-internet.herokuapp.com/nested_frames",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 197
+    },
+    {
+      "index": 1,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-left\"]",
+      "ok": false,
+      "error": "TimeoutError: Page.inner_text: Timeout 2500ms exceeded.\nCall log:\n  - waiting for locator(\"body\")\n",
+      "elapsed_ms": 2506
+    },
+    {
+      "index": 2,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-middle\"]",
+      "ok": false,
+      "error": "TimeoutError: Page.inner_text: Timeout 2500ms exceeded.\nCall log:\n  - waiting for locator(\"body\")\n",
+      "elapsed_ms": 2501
+    },
+    {
+      "index": 3,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-right\"]",
+      "ok": false,
+      "error": "TimeoutError: Page.inner_text: Timeout 2500ms exceeded.\nCall log:\n  - waiting for locator(\"body\")\n",
+      "elapsed_ms": 2501
+    },
+    {
+      "index": 4,
+      "op": "frame_read",
+      "target": "body",
+      "value": "",
+      "frame": "frame[name=\"frame-bottom\"]",
+      "ok": false,
+      "error": "TimeoutError: Page.inner_text: Timeout 2500ms exceeded.\nCall log:\n  - waiting for locator(\"body\")\n",
+      "elapsed_ms": 2508
+    },
+    {
+      "index": 5,
+      "op": "settle",
+      "target": "",
+      "value": "1.26s",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 0
+    }
+  ],
+  "n_steps": 6,
+  "n_failed_steps": 4,
+  "logs": "[PASS] inet_nested_frames_read run 2 backend=naive\n    checks: all 4 checks passed\n"
+}

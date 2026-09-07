@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "cbe1e7ad9068",
+  "session": "20260907T141553Z",
+  "task_id": "sauce_checkout_happy_path",
+  "instruction": "Log in to https://www.saucedemo.com as standard_user / secret_sauce, add \"Sauce Labs Backpack\" to the cart, and complete the checkout filling the form with first name \"Ada\", last name \"Lovelace\", postal code \"N2L 3G1\". Finish the order.",
+  "category": "form",
+  "difficulty": "hard",
+  "start_url": "https://www.saucedemo.com",
+  "site": "saucedemo.com",
+  "backend": "oracle",
+  "run_index": 0,
+  "seed": 20260831,
+  "tag": "",
+  "timestamp": "2026-09-07T14:16:40+00:00",
+  "passed": true,
+  "final_url": "https://www.saucedemo.com/checkout-complete.html",
+  "error": "",
+  "error_type": "",
+  "duration_ms": 3886,
+  "checks": [
+    {
+      "name": "on_complete_page",
+      "passed": true,
+      "detail": "url=https://www.saucedemo.com/checkout-complete.html"
+    },
+    {
+      "name": "thank_you_header",
+      "passed": true,
+      "detail": "header='Thank you for your order!'"
+    },
+    {
+      "name": "confirmation_body_present",
+      "passed": true,
+      "detail": "body='Your order has been dispatched, and will arrive just as fast as the pony can get there!'"
+    }
+  ],
+  "checks_summary": "all 3 checks passed",
+  "steps": [
+    {
+      "index": 0,
+      "op": "goto",
+      "target": "https://www.saucedemo.com",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 1162
+    },
+    {
+      "index": 1,
+      "op": "fill",
+      "target": "#user-name",
+      "value": "standard_user",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 38
+    },
+    {
+      "index": 2,
+      "op": "fill",
+      "target": "#password",
+      "value": "secret_sauce",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 14
+    },
+    {
+      "index": 3,
+      "op": "click",
+      "target": "#login-button",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 83
+    },
+    {
+      "index": 4,
+      "op": "click",
+      "target": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 35
+    },
+    {
+      "index": 5,
+      "op": "click",
+      "target": ".shopping_cart_link",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 54
+    },
+    {
+      "index": 6,
+      "op": "click",
+      "target": "[data-test=\"checkout\"]",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 46
+    },
+    {
+      "index": 7,
+      "op": "fill",
+      "target": "#first-name",
+      "value": "Ada",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 27
+    },
+    {
+      "index": 8,
+      "op": "fill",
+      "target": "#last-name",
+      "value": "Lovelace",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 13
+    },
+    {
+      "index": 9,
+      "op": "fill",
+      "target": "#postal-code",
+      "value": "N2L 3G1",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 13
+    },
+    {
+      "index": 10,
+      "op": "click",
+      "target": "#continue",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 59
+    },
+    {
+      "index": 11,
+      "op": "wait_for",
+      "target": ".summary_info",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 5
+    },
+    {
+      "index": 12,
+      "op": "click",
+      "target": "#finish",
+      "value": "",
+      "frame": "",
+      "ok": true,
+      "error": "",
+      "elapsed_ms": 47
+    }
+  ],
+  "n_steps": 13,
+  "n_failed_steps": 0,
+  "logs": "[PASS] sauce_checkout_happy_path run 0 backend=oracle\n    checks: all 3 checks passed\n"
+}

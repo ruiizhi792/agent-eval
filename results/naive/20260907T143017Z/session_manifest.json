@@ -1,0 +1,26 @@
+{
+  "session": "20260907T143017Z",
+  "backend": "naive",
+  "tag": "",
+  "created_utc": "2026-09-07T14:30:48+00:00",
+  "runs_per_task": 6,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 1,
+  "n_runs": 6,
+  "n_passed": 6,
+  "elapsed_s": 30.89,
+  "python": "3.13.14",
+  "tasks": [
+    "sauce_login_success"
+  ],
+  "results": [
+    "naive\\20260907T143017Z\\sauce_login_success__run00__20260907T143017Z__2d8493.json",
+    "naive\\20260907T143017Z\\sauce_login_success__run01__20260907T143023Z__7aec38.json",
+    "naive\\20260907T143017Z\\sauce_login_success__run02__20260907T143028Z__fcc0bf.json",
+    "naive\\20260907T143017Z\\sauce_login_success__run03__20260907T143034Z__4e9951.json",
+    "naive\\20260907T143017Z\\sauce_login_success__run04__20260907T143038Z__a4f3a9.json",
+    "naive\\20260907T143017Z\\sauce_login_success__run05__20260907T143043Z__a96f75.json"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "session": "20260907T143049Z",
+  "backend": "naive",
+  "tag": "",
+  "created_utc": "2026-09-07T14:31:20+00:00",
+  "runs_per_task": 6,
+  "per_run_timeout_s": 60.0,
+  "headless": true,
+  "seed": 20260831,
+  "n_tasks": 1,
+  "n_runs": 6,
+  "n_passed": 6,
+  "elapsed_s": 30.94,
+  "python": "3.13.14",
+  "tasks": [
+    "sauce_add_to_cart_single"
+  ],
+  "results": [
+    "naive\\20260907T143049Z\\sauce_add_to_cart_single__run00__20260907T143049Z__8df5fc.json",
+    "naive\\20260907T143049Z\\sauce_add_to_cart_single__run01__20260907T143054Z__6dc403.json",
+    "naive\\20260907T143049Z\\sauce_add_to_cart_single__run02__20260907T143059Z__342bab.json",
+    "naive\\20260907T143049Z\\sauce_add_to_cart_single__run03__20260907T143104Z__3c0969.json",
+    "naive\\20260907T143049Z\\sauce_add_to_cart_single__run04__20260907T143109Z__f74b97.json",
+    "naive\\20260907T143049Z\\sauce_add_to_cart_single__run05__20260907T143115Z__0872c7.json"
+  ]
+}
