@@ -21,6 +21,7 @@ crashing the run.
 from __future__ import annotations
 
 import asyncio
+import inspect
 import os
 import time
 from typing import Any, Dict, List
@@ -55,6 +56,7 @@ class BrowserUseBackend(AgentBackend):
         "skipped gracefully when either is missing."
     )
     is_reference = False
+    uses_runner_page = False
 
     def __init__(self, headless: bool = True, seed: int = 0, timeout_ms: int = 60_000, **options: Any) -> None:
         """Resolve the model and step budget.
@@ -68,6 +70,9 @@ class BrowserUseBackend(AgentBackend):
         super().__init__(headless=headless, seed=seed, timeout_ms=timeout_ms, **options)
         self.model: str = str(options.get("model") or os.environ.get(MODEL_ENV_VAR) or DEFAULT_MODEL)
         self.max_steps: int = int(options.get("max_steps", 30))
+        self._browser_session: Any = None
+        self._cdp_url: str = ""
+        self._agent_final_url: str = ""
 
     # -- availability ------------------------------------------------------ #
     def check_available(self) -> None:
@@ -93,6 +98,16 @@ class BrowserUseBackend(AgentBackend):
             raise BackendUnavailable(
                 f"installed browser-use version does not expose a known LLM class: {exc}",
                 hint="See aeval/backends/browser_use.py::_load_llm_class and add your version's import path.",
+            ) from exc
+
+        try:
+            self._load_browser_session_class()
+        except BackendUnavailable:
+            raise
+        except Exception as exc:  # noqa: BLE001 - package layout changed
+            raise BackendUnavailable(
+                "installed browser-use version does not expose BrowserSession",
+                hint="Install browser-use[core] or add your version's import path to _load_browser_session_class().",
             ) from exc
 
         if not any(os.environ.get(var) for var in API_KEY_ENV_VARS):
@@ -134,6 +149,36 @@ class BrowserUseBackend(AgentBackend):
             hint="tried: " + "; ".join(errors),
         )
 
+    def _load_browser_session_class(self) -> Any:
+        """Locate browser-use's CDP-capable browser-session class.
+
+        A browser-use agent owns its browser.  The worker attaches to that same
+        browser over CDP for deterministic Playwright verification after the agent
+        stops, so a session class that exposes ``cdp_url`` is mandatory.
+        """
+        import importlib
+
+        candidates = (
+            ("browser_use.browser", "BrowserSession"),
+            ("browser_use", "BrowserSession"),
+            ("browser_use", "Browser"),
+        )
+        errors: List[str] = []
+        for module_path, class_name in candidates:
+            try:
+                module = importlib.import_module(module_path)
+            except ImportError as exc:
+                errors.append(f"{module_path}: {exc}")
+                continue
+            cls = getattr(module, class_name, None)
+            if cls is not None:
+                return cls
+            errors.append(f"{module_path}.{class_name}: missing")
+        raise BackendUnavailable(
+            "could not locate BrowserSession for browser-use",
+            hint="tried: " + "; ".join(errors),
+        )
+
     def _build_llm(self) -> Any:
         """Instantiate the LLM for the configured model.
 
@@ -150,6 +195,18 @@ class BrowserUseBackend(AgentBackend):
             except TypeError:
                 return cls(self.model)
 
+    def _build_browser_session(self) -> Any:
+        """Build a browser-use session that launches an isolated browser.
+
+        The browser-use API has used both ``BrowserSession`` and ``Browser`` names.
+        Each supported form exposes a CDP endpoint once started by ``Agent.run``.
+        """
+        cls = self._load_browser_session_class()
+        try:
+            return cls(headless=self.headless)
+        except TypeError:
+            return cls()
+
     # -- execution --------------------------------------------------------- #
     def run(self, task: TaskSpec, page: Any) -> Trajectory:
         """Drive ``browser-use`` to attempt the task.
@@ -157,7 +214,8 @@ class BrowserUseBackend(AgentBackend):
         Args:
             task: The task; only ``task.instruction`` (and ``start_url``) are used —
                 never ``task.plan``, which would be cheating.
-            page: Unused; ``browser-use`` launches and owns its own browser.
+            page: Always ``None``. ``browser-use`` launches and owns its own browser;
+                :meth:`page_for_verification` reconnects to that browser afterwards.
 
         Returns:
             A trajectory built from the agent's action history.
@@ -171,7 +229,9 @@ class BrowserUseBackend(AgentBackend):
         except Exception as exc:  # noqa: BLE001 - surfaced as a failed run, not a crash
             return _trajectory_from_exception(task, exc, started)
 
-        return self._trajectory_from_history(task, history, started)
+        trajectory = self._trajectory_from_history(task, history, started)
+        self._agent_final_url = trajectory.final_url
+        return trajectory
 
     async def _run_agent(self, task: TaskSpec) -> Any:
         """Run the agent coroutine with a wall-clock cap.
@@ -185,12 +245,66 @@ class BrowserUseBackend(AgentBackend):
         from browser_use import Agent  # noqa: PLC0415 - lazy, heavy import
 
         llm = self._build_llm()
+        browser_session = self._build_browser_session()
+        self._browser_session = browser_session
         kwargs: Dict[str, Any] = {"task": task.instruction, "llm": llm}
-        agent = Agent(**kwargs)
-        return await asyncio.wait_for(
+        try:
+            # Current browser-use releases call this ``browser_session``. Older
+            # releases accepted the same object as ``browser``.
+            agent = Agent(**kwargs, browser_session=browser_session)
+        except TypeError:
+            agent = Agent(**kwargs, browser=browser_session)
+        history = await asyncio.wait_for(
             agent.run(max_steps=self.max_steps),
             timeout=max(self.timeout_ms, 1) / 1000.0,
         )
+        profile = getattr(browser_session, "browser_profile", None)
+        self._cdp_url = str(
+            getattr(browser_session, "cdp_url", "")
+            or getattr(profile, "cdp_url", "")
+            or ""
+        )
+        return history
+
+    def page_for_verification(self, page: Any, playwright: Any) -> Any:
+        """Attach Playwright to browser-use's browser and return its active page.
+
+        This is the boundary that keeps the agent and the verifier honest: the page
+        returned here is the page the agent actually changed. If browser-use cannot
+        expose its CDP endpoint, the run is marked unavailable instead of grading an
+        unrelated blank page.
+        """
+        _ = page
+        if not self._cdp_url:
+            raise BackendUnavailable(
+                "browser-use did not expose a CDP endpoint for verification",
+                hint="Use a browser-use release with BrowserSession/CDP support (browser-use[core]).",
+            )
+        browser = playwright.chromium.connect_over_cdp(self._cdp_url)
+        pages = [candidate for context in browser.contexts for candidate in context.pages]
+        if not pages:
+            raise RuntimeError("browser-use CDP session contains no pages to verify")
+        if self._agent_final_url:
+            for candidate in reversed(pages):
+                if candidate.url == self._agent_final_url:
+                    return candidate
+        return pages[-1]
+
+    def teardown(self) -> None:
+        """Close the browser-use-owned browser after the verifier has inspected it."""
+        session = self._browser_session
+        self._browser_session = None
+        if session is None:
+            return
+        kill = getattr(session, "kill", None)
+        if not callable(kill):
+            return
+        try:
+            result = kill()
+            if inspect.isawaitable(result):
+                asyncio.run(result)
+        except Exception:  # noqa: BLE001 - worker process exit is the final fallback
+            pass
 
     def _trajectory_from_history(self, task: TaskSpec, history: Any, started: float) -> Trajectory:
         """Convert a ``browser-use`` history object into our trajectory format.

@@ -19,6 +19,13 @@ believe you should read yourself** before you rely on a number it produces — d
 
 Everything below is reproducible from `results/`.
 
+> **Post-delivery repair (2026-09-07).** The original `browser-use` adapter launched
+> its own browser while the worker graded a different, untouched Playwright page. That
+> could only produce false failures for a real agent. The adapter now exposes its CDP
+> endpoint and the worker reconnects to the agent's actual page before verification;
+> a missing endpoint is reported as `unavailable`, never as a score. This integration
+> remains unexecuted until `browser-use[core]` and a real model credential are supplied.
+
 ---
 
 ## 1. What broke, and what I patched

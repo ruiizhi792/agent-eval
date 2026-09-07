@@ -111,7 +111,14 @@ Outputs: `report.md` (tables + flaky list) and `passrate_by_task.png`.
 | --- | --- | --- |
 | `oracle` | Robust executor of the reference plan. **Not an agent.** | Calibration. Expect ~100%. |
 | `naive` | Hand-written **fragile** baseline. **Not an LLM agent.** | Exercising the harness with no API key. |
-| `browser-use` | A real LLM-driven browser agent. | Actual agent evaluation. |
+| `browser-use` | A real LLM-driven browser agent; its own CDP browser is reattached for grading. | Actual agent evaluation. |
+
+`browser-use` owns its browser. AgentEval reconnects to that exact browser through its
+CDP endpoint after the run and grades the page the agent actually changed. If the
+installed browser-use version cannot expose that endpoint, the run is marked
+unavailable rather than silently grading an unrelated blank page. Install the optional
+dependency with `pip install 'browser-use[core]'` and run a small sweep before quoting
+any LLM result.
 
 > ### ⚠️ Read this before quoting a number from `naive`
 >
@@ -276,7 +283,12 @@ python run_eval.py analyze --backend naive --session latest
 | --- | --- | --- |
 | `oracle` | 参考方案的稳健执行器。**不是 agent。** | 校准。预期 ~100%。 |
 | `naive` | 手写的**脆弱**基线。**不是 LLM agent。** | 没有 API key 时跑通框架。 |
-| `browser-use` | 真 LLM 驱动的浏览器 agent。 | 真实 agent 评测。 |
+| `browser-use` | 真 LLM 驱动的浏览器 agent；通过 CDP 重连其实际浏览器后评分。 | 真实 agent 评测。 |
+
+`browser-use` 自己管理浏览器。AgentEval 会在运行结束后通过 CDP 重连到**同一个**浏览器，
+并对 agent 实际修改过的页面评分。若已安装的 browser-use 版本无法暴露该端点，运行会被明确
+标为 unavailable，绝不会静默地对无关的空白页面评分。请用
+`pip install 'browser-use[core]'` 安装可选依赖，并先跑一个小规模真实模型评测，再引用结果。
 
 > ### ⚠️ 引用 naive 的数字前必读
 >

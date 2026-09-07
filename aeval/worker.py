@@ -154,6 +154,7 @@ def execute(
 
     playwright_cm: Any = None
     browser: Any = None
+    backend: Any = None
     try:
         backend = create_backend(
             backend_name,
@@ -164,30 +165,29 @@ def execute(
         )
         backend.check_available()
 
-        # Both deterministic backends drive the page we hand them. The LLM backend
-        # (browser-use) launches its own browser and ignores this one — the small
-        # waste of an idle Chromium is the price of a single shared interface.
         playwright_cm = sync_playwright()
         playwright = playwright_cm.__enter__()
-        browser = playwright.chromium.launch(headless=headless)
-        context = browser.new_context(viewport={"width": 1280, "height": 900})
-        page = context.new_page()
-        page.set_default_timeout(BACKEND_PHASE_TIMEOUT_MS)
-        page.set_default_navigation_timeout(BACKEND_PHASE_TIMEOUT_MS)
-
-        backend.setup(page)
+        page: Any = None
+        if backend.uses_runner_page:
+            browser = playwright.chromium.launch(headless=headless)
+            context = browser.new_context(viewport={"width": 1280, "height": 900})
+            page = context.new_page()
+            page.set_default_timeout(BACKEND_PHASE_TIMEOUT_MS)
+            page.set_default_navigation_timeout(BACKEND_PHASE_TIMEOUT_MS)
+            backend.setup(page)
         trajectory: Trajectory = backend.run(task, page)
 
         result.steps = [step.to_dict() for step in trajectory.steps]
         result.n_steps = trajectory.n_steps
         result.n_failed_steps = trajectory.n_failed_steps
-        result.final_url = trajectory.final_url or page.url
+        verification_page = backend.page_for_verification(page, playwright)
+        result.final_url = trajectory.final_url or verification_page.url
         if trajectory.error:
             result.error = trajectory.error
             result.error_type = "backend"
 
-        page.set_default_timeout(VERIFY_PHASE_TIMEOUT_MS)
-        outcome = evaluate_verify(task, page)
+        verification_page.set_default_timeout(VERIFY_PHASE_TIMEOUT_MS)
+        outcome = evaluate_verify(task, verification_page)
         result.checks = [check.to_dict() for check in outcome.checks]
         result.checks_summary = outcome.summary()
         result.passed = outcome.passed
@@ -204,6 +204,11 @@ def execute(
         result.error = f"{type(exc).__name__}: {exc}"
         result.logs = (result.logs + "\n" + traceback.format_exc()).strip()
     finally:
+        try:
+            if backend is not None:
+                backend.teardown()
+        except Exception:  # noqa: BLE001 - teardown must not mask the real result
+            pass
         try:
             if browser is not None:
                 browser.close()

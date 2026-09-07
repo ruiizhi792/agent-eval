@@ -96,6 +96,12 @@ class AgentBackend(ABC):
     #: True for backends that are calibration tools rather than subjects under test.
     is_reference: bool = False
 
+    #: Whether the worker must create a Playwright page before calling ``run``.
+    #: Most backends drive that page directly. Backends that own their browser (for
+    #: example browser-use) set this to ``False`` and later return their real page
+    #: from :meth:`page_for_verification`.
+    uses_runner_page: bool = True
+
     def __init__(
         self,
         headless: bool = True,
@@ -140,6 +146,29 @@ class AgentBackend(ABC):
         Args:
             page: The page the run will use.
         """
+
+    def page_for_verification(self, page: Any, playwright: Any) -> Any:
+        """Return the page whose state must be graded after :meth:`run`.
+
+        The default is the runner-owned page passed to :meth:`run`. A backend that
+        owns a separate browser must override this method and return a page connected
+        to that browser; grading a different, untouched page would manufacture a
+        false failure.
+
+        Args:
+            page: Runner-owned page, or ``None`` when :attr:`uses_runner_page` is
+                false.
+            playwright: Live Playwright controller, available for CDP attachment.
+
+        Returns:
+            The page to give to the task verifier.
+        """
+        _ = playwright
+        if page is None:
+            raise RuntimeError(
+                f"backend {self.name!r} did not provide a page for verification"
+            )
+        return page
 
     def teardown(self) -> None:
         """Hook called after :meth:`run`, e.g. to close a private browser."""

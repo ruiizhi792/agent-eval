@@ -31,5 +31,7 @@ pytest==8.3.3               # offline test suite (tests/ needs no browser)
 # layouts (browser_use.ChatBrowserUse / browser_use.llm.ChatOpenAI / langchain_openai)
 # but has never been executed here — there is no version I can honestly claim to have
 # verified. Install whatever is current, check `python run_eval.py list-backends`, and
-# add your version's import path to _load_llm_class() if it is missing.
-browser-use                 # optional  (pip install browser-use; set OPENAI_API_KEY)
+# add your version's import path to _load_llm_class() if it is missing. The ``core``
+# extra supplies the CDP-capable local runtime needed to grade the browser the agent
+# actually used.
+browser-use[core]           # optional  (pip install 'browser-use[core]'; set OPENAI_API_KEY)
